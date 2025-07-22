@@ -73,19 +73,22 @@ const Checkout = () => {
           <div className="col-md-5 col-lg-4 order-md-last">
             <div className="card mb-4">
               <div className="card-header py-3" style={{
-                background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)',
+                background: 'linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 50%, #fce4ec 100%)',
                 border: 'none',
                 borderRadius: '15px 15px 0 0'
               }}>
                 <h5 className="mb-0" style={{
-                  color: '#1565c0',
+                  background: 'linear-gradient(45deg, #1565c0, #7b1fa2)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                   fontWeight: '600'
                 }}>Order Summary</h5>
               </div>
               <div className="card-body" style={{
                 background: 'white',
                 borderRadius: '0 0 15px 15px',
-                boxShadow: '0 5px 15px rgba(33, 150, 243, 0.1)'
+                boxShadow: '0 8px 25px rgba(156, 39, 176, 0.15)'
               }}>
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" style={{
@@ -93,20 +96,46 @@ const Checkout = () => {
                     color: '#666'
                   }}>
                     Products ({totalItems})
-                    <span style={{ color: '#1976d2', fontWeight: '600' }}>${Math.round(subtotal)}</span>
+                    <span style={{ 
+                      background: 'linear-gradient(45deg, #1976d2, #7b1fa2)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      fontWeight: '700',
+                      fontSize: '1.1rem'
+                    }}>${Math.round(subtotal)}</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between align-items-center px-0" style={{
                     backgroundColor: 'transparent',
                     color: '#666'
                   }}>
                     Shipping
-                    <span style={{ color: '#1976d2', fontWeight: '600' }}>${shipping}</span>
+                    <span style={{ 
+                      background: 'linear-gradient(45deg, #1976d2, #7b1fa2)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      fontWeight: '700',
+                      fontSize: '1.1rem'
+                    }}>${shipping}</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3" style={{
                     backgroundColor: 'transparent'
                   }}>
-                    <strong style={{ color: '#1565c0' }}>Total</strong>
-                    <strong style={{ color: '#1565c0', fontSize: '1.2rem' }}>${Math.round(subtotal + shipping)}</strong>
+                    <strong style={{ 
+                      background: 'linear-gradient(45deg, #1565c0, #7b1fa2, #e91e63)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      fontSize: '1.1rem'
+                    }}>Total</strong>
+                    <strong style={{ 
+                      background: 'linear-gradient(45deg, #1565c0, #7b1fa2, #e91e63)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                      fontSize: '1.3rem'
+                    }}>${Math.round(subtotal + shipping)}</strong>
                   </li>
                 </ul>
               </div>
@@ -117,53 +146,59 @@ const Checkout = () => {
               <button
                 className="btn w-100"
                 style={{
-                  background: 'linear-gradient(135deg, #2196f3 0%, #1976d2 100%)',
+                  background: 'linear-gradient(135deg, #2196f3 0%, #9c27b0 50%, #e91e63 100%)',
                   color: 'white',
                   border: 'none',
                   borderRadius: '25px',
                   padding: '15px 30px',
                   fontWeight: '600',
                   fontSize: '1.1rem',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 4px 20px rgba(33, 150, 243, 0.3)'
+                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                  boxShadow: '0 6px 25px rgba(156, 39, 176, 0.4)',
+                  position: 'relative',
+                  overflow: 'hidden'
                 }}
                 onMouseEnter={(e) => {
-                  e.target.style.transform = 'translateY(-3px)';
-                  e.target.style.boxShadow = '0 8px 30px rgba(33, 150, 243, 0.4)';
+                  e.target.style.transform = 'translateY(-4px) scale(1.02)';
+                  e.target.style.boxShadow = '0 12px 40px rgba(156, 39, 176, 0.6)';
                 }}
                 onMouseLeave={(e) => {
-                  e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = '0 4px 20px rgba(33, 150, 243, 0.3)';
+                  e.target.style.transform = 'translateY(0) scale(1)';
+                  e.target.style.boxShadow = '0 6px 25px rgba(156, 39, 176, 0.4)';
                 }}
                 onClick={simulateTransaction}
                 disabled={txStatus === "pending"}
               >
                 {txStatus === "pending"
-                  ? "Processing..."
-                  : "Confirm Purchase (0.001 ETH)"}
+                  ? "🔄 Processing..."
+                  : "💎 Confirm Purchase (0.001 ETH)"}
               </button>
 
               {/* ✅ Success or Error UI feedback */}
               {txStatus === "success" && (
                 <div className="alert mt-3" style={{
-                  backgroundColor: 'rgba(76, 175, 80, 0.1)',
-                  border: '1px solid rgba(76, 175, 80, 0.3)',
+                  background: 'linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(129, 199, 132, 0.1) 100%)',
+                  border: '2px solid rgba(76, 175, 80, 0.3)',
                   borderRadius: '15px',
                   color: '#2e7d32',
-                  padding: '15px 20px'
+                  padding: '15px 20px',
+                  fontWeight: '600',
+                  boxShadow: '0 4px 15px rgba(76, 175, 80, 0.2)'
                 }}>
-                  🎉 Transaction successful!
+                  🎉✨ Transaction successful! Welcome to the future of shopping! 🚀
                 </div>
               )}
               {txStatus === "error" && (
                 <div className="alert mt-3" style={{
-                  backgroundColor: 'rgba(244, 67, 54, 0.1)',
-                  border: '1px solid rgba(244, 67, 54, 0.3)',
+                  background: 'linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(233, 30, 99, 0.1) 100%)',
+                  border: '2px solid rgba(244, 67, 54, 0.3)',
                   borderRadius: '15px',
                   color: '#c62828',
-                  padding: '15px 20px'
+                  padding: '15px 20px',
+                  fontWeight: '600',
+                  boxShadow: '0 4px 15px rgba(244, 67, 54, 0.2)'
                 }}>
-                  ❌ Transaction failed: {txError}
+                  ❌💔 Transaction failed: {txError}
                 </div>
               )}
             </div>
@@ -174,22 +209,128 @@ const Checkout = () => {
             <div className="card" style={{
               border: 'none',
               borderRadius: '20px',
-              boxShadow: '0 5px 25px rgba(33, 150, 243, 0.1)',
-              background: 'white'
+              boxShadow: '0 8px 30px rgba(156, 39, 176, 0.15)',
+              background: 'linear-gradient(135deg, #ffffff 0%, #f8fbff 30%, #fce4ec 70%, #f3e5f5 100%)'
             }}>
               <div className="card-header py-3" style={{
-                background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)',
+                background: 'linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 50%, #fce4ec 100%)',
                 border: 'none',
                 borderRadius: '20px 20px 0 0'
               }}>
                 <h4 className="mb-0" style={{
-                  color: '#1565c0',
+                  background: 'linear-gradient(45deg, #1565c0, #7b1fa2)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
                   fontWeight: '600'
-                }}>Billing address</h4>
+                }}>💳 Billing Address</h4>
               </div>
-              <div className="card-body" style={{
-                padding: '2rem'
-              }}>Your form elements here...</div>
+              <div className="card-body" style={{ padding: '2rem' }}>
+                <div className="row">
+                  <div className="col-md-6 mb-3">
+                    <label className="form-label" style={{ color: '#7b1fa2', fontWeight: '600' }}>
+                      👤 Full Name
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter your full name"
+                      style={{
+                        border: '2px solid rgba(156, 39, 176, 0.2)',
+                        borderRadius: '15px',
+                        padding: '12px 20px',
+                        fontSize: '1rem',
+                        transition: 'all 0.3s ease'
+                      }}
+                    />
+                  </div>
+                  <div className="col-md-6 mb-3">
+                    <label className="form-label" style={{ color: '#7b1fa2', fontWeight: '600' }}>
+                      📧 Email Address
+                    </label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      placeholder="Enter your email"
+                      style={{
+                        border: '2px solid rgba(156, 39, 176, 0.2)',
+                        borderRadius: '15px',
+                        padding: '12px 20px',
+                        fontSize: '1rem',
+                        transition: 'all 0.3s ease'
+                      }}
+                    />
+                  </div>
+                  <div className="col-12 mb-3">
+                    <label className="form-label" style={{ color: '#7b1fa2', fontWeight: '600' }}>
+                      🏠 Address
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Enter your address"
+                      style={{
+                        border: '2px solid rgba(156, 39, 176, 0.2)',
+                        borderRadius: '15px',
+                        padding: '12px 20px',
+                        fontSize: '1rem',
+                        transition: 'all 0.3s ease'
+                      }}
+                    />
+                  </div>
+                  <div className="col-md-4 mb-3">
+                    <label className="form-label" style={{ color: '#7b1fa2', fontWeight: '600' }}>
+                      🏙️ City
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="City"
+                      style={{
+                        border: '2px solid rgba(156, 39, 176, 0.2)',
+                        borderRadius: '15px',
+                        padding: '12px 20px',
+                        fontSize: '1rem',
+                        transition: 'all 0.3s ease'
+                      }}
+                    />
+                  </div>
+                  <div className="col-md-4 mb-3">
+                    <label className="form-label" style={{ color: '#7b1fa2', fontWeight: '600' }}>
+                      🌍 State
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="State"
+                      style={{
+                        border: '2px solid rgba(156, 39, 176, 0.2)',
+                        borderRadius: '15px',
+                        padding: '12px 20px',
+                        fontSize: '1rem',
+                        transition: 'all 0.3s ease'
+                      }}
+                    />
+                  </div>
+                  <div className="col-md-4 mb-3">
+                    <label className="form-label" style={{ color: '#7b1fa2', fontWeight: '600' }}>
+                      📮 ZIP Code
+                    </label>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="ZIP"
+                      style={{
+                        border: '2px solid rgba(156, 39, 176, 0.2)',
+                        borderRadius: '15px',
+                        padding: '12px 20px',
+                        fontSize: '1rem',
+                        transition: 'all 0.3s ease'
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -201,26 +342,59 @@ const Checkout = () => {
     <>
       <Navbar />
       <div className="container my-3 py-3" style={{
-        background: 'linear-gradient(135deg, #f8fbff 0%, #e3f2fd 100%)',
+        background: 'linear-gradient(135deg, #f8fbff 0%, #fce4ec 30%, #f3e5f5 70%, #e3f2fd 100%)',
         borderRadius: '20px',
-        boxShadow: '0 5px 25px rgba(33, 150, 243, 0.1)',
-        minHeight: '80vh'
+        boxShadow: '0 10px 40px rgba(156, 39, 176, 0.15), 0 5px 20px rgba(33, 150, 243, 0.1)',
+        minHeight: '80vh',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
+        {/* Animated background */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `
+            radial-gradient(circle at 25% 75%, rgba(233, 30, 99, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 75% 25%, rgba(156, 39, 176, 0.05) 0%, transparent 50%)
+          `,
+          animation: 'float 10s ease-in-out infinite',
+          zIndex: 0
+        }}></div>
+        
         <h1 className="text-center" style={{
-          color: '#1565c0',
+          background: 'linear-gradient(45deg, #1565c0, #7b1fa2, #e91e63)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
           fontWeight: '600',
           marginBottom: '1rem',
-          textShadow: '0 1px 3px rgba(21, 101, 192, 0.2)'
-        }}>Checkout</h1>
+          position: 'relative',
+          zIndex: 2
+        }}>🛒✨ Checkout</h1>
         <hr style={{
           border: 'none',
           height: '3px',
-          background: 'linear-gradient(90deg, transparent, #2196f3, transparent)',
+          background: 'linear-gradient(90deg, transparent, #2196f3, #9c27b0, #e91e63, transparent)',
           margin: '2rem auto',
-          width: '100px',
-          borderRadius: '2px'
+          width: '150px',
+          borderRadius: '2px',
+          position: 'relative',
+          zIndex: 2
         }} />
-        {state.length ? <ShowCheckout /> : <EmptyCart />}
+        <div style={{ position: 'relative', zIndex: 2 }}>
+          {state.length ? <ShowCheckout /> : <EmptyCart />}
+        </div>
+        
+        <style jsx>{`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-8px) rotate(0.5deg); }
+            66% { transform: translateY(4px) rotate(-0.5deg); }
+          }
+        `}</style>
       </div>
       <Footer />
     </>

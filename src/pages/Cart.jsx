@@ -49,19 +49,22 @@ const Cart = () => {
               <div className="col-md-8">
                 <div className="card mb-4">
                   <div className="card-header py-3" style={{
-                    background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)',
+                    background: 'linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 50%, #fce4ec 100%)',
                     border: 'none',
                     borderRadius: '15px 15px 0 0'
                   }}>
                     <h5 className="mb-0" style={{
-                      color: '#1565c0',
+                      background: 'linear-gradient(45deg, #1565c0, #7b1fa2)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
                       fontWeight: '600'
                     }}>Item List</h5>
                   </div>
                   <div className="card-body" style={{
                     background: 'white',
                     borderRadius: '0 0 15px 15px',
-                    boxShadow: '0 5px 15px rgba(33, 150, 243, 0.1)'
+                    boxShadow: '0 8px 25px rgba(156, 39, 176, 0.15)'
                   }}>
                     {state.map((item) => {
                       return (
@@ -71,6 +74,11 @@ const Cart = () => {
                               <div
                                 className="bg-image rounded"
                                 data-mdb-ripple-color="light"
+                                style={{
+                                  borderRadius: '15px',
+                                  overflow: 'hidden',
+                                  boxShadow: '0 4px 15px rgba(156, 39, 176, 0.1)'
+                                }}
                               >
                                 <img
                                   src={item.image}
@@ -78,12 +86,20 @@ const Cart = () => {
                                   alt={item.title}
                                   width={100}
                                   height={75}
+                                  style={{
+                                    borderRadius: '15px',
+                                    filter: 'brightness(1.05) saturate(1.1)'
+                                  }}
                                 />
                               </div>
                             </div>
 
                             <div className="col-lg-5 col-md-6">
-                              <p>
+                              <p style={{
+                                color: '#7b1fa2',
+                                fontWeight: '600',
+                                fontSize: '1.1rem'
+                              }}>
                                 <strong>{item.title}</strong>
                               </p>
                               {/* <p>Color: blue</p>
@@ -98,21 +114,26 @@ const Cart = () => {
                                 <button
                                   className="btn px-3"
                                   style={{
-                                    backgroundColor: '#f5f5f5',
-                                    border: '1px solid #e0e0e0',
+                                    background: 'linear-gradient(45deg, #f5f5f5, #fce4ec)',
+                                    border: '2px solid rgba(156, 39, 176, 0.2)',
                                     borderRadius: '10px',
-                                    color: '#666',
-                                    transition: 'all 0.3s ease'
+                                    color: '#7b1fa2',
+                                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                    fontWeight: '600'
                                   }}
                                   onMouseEnter={(e) => {
-                                    e.target.style.backgroundColor = '#2196f3';
+                                    e.target.style.background = 'linear-gradient(45deg, #e91e63, #9c27b0)';
                                     e.target.style.color = 'white';
-                                    e.target.style.borderColor = '#2196f3';
+                                    e.target.style.borderColor = '#e91e63';
+                                    e.target.style.transform = 'scale(1.1)';
+                                    e.target.style.boxShadow = '0 4px 15px rgba(233, 30, 99, 0.3)';
                                   }}
                                   onMouseLeave={(e) => {
-                                    e.target.style.backgroundColor = '#f5f5f5';
-                                    e.target.style.color = '#666';
-                                    e.target.style.borderColor = '#e0e0e0';
+                                    e.target.style.background = 'linear-gradient(45deg, #f5f5f5, #fce4ec)';
+                                    e.target.style.color = '#7b1fa2';
+                                    e.target.style.borderColor = 'rgba(156, 39, 176, 0.2)';
+                                    e.target.style.transform = 'scale(1)';
+                                    e.target.style.boxShadow = 'none';
                                   }}
                                   onClick={() => {
                                     removeItem(item);
@@ -122,30 +143,39 @@ const Cart = () => {
                                 </button>
 
                                 <p className="mx-5" style={{
-                                  color: '#1976d2',
-                                  fontWeight: '600',
+                                  background: 'linear-gradient(45deg, #1976d2, #7b1fa2)',
+                                  WebkitBackgroundClip: 'text',
+                                  WebkitTextFillColor: 'transparent',
+                                  backgroundClip: 'text',
+                                  fontWeight: '700',
                                   fontSize: '1.1rem',
-                                  margin: 'auto'
+                                  margin: 'auto',
+                                  textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
                                 }}>{item.qty}</p>
 
                                 <button
                                   className="btn px-3"
                                   style={{
-                                    backgroundColor: '#f5f5f5',
-                                    border: '1px solid #e0e0e0',
+                                    background: 'linear-gradient(45deg, #f5f5f5, #e8f5e8)',
+                                    border: '2px solid rgba(76, 175, 80, 0.2)',
                                     borderRadius: '10px',
-                                    color: '#666',
-                                    transition: 'all 0.3s ease'
+                                    color: '#4caf50',
+                                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                    fontWeight: '600'
                                   }}
                                   onMouseEnter={(e) => {
-                                    e.target.style.backgroundColor = '#2196f3';
+                                    e.target.style.background = 'linear-gradient(45deg, #4caf50, #66bb6a)';
                                     e.target.style.color = 'white';
-                                    e.target.style.borderColor = '#2196f3';
+                                    e.target.style.borderColor = '#4caf50';
+                                    e.target.style.transform = 'scale(1.1)';
+                                    e.target.style.boxShadow = '0 4px 15px rgba(76, 175, 80, 0.3)';
                                   }}
                                   onMouseLeave={(e) => {
-                                    e.target.style.backgroundColor = '#f5f5f5';
-                                    e.target.style.color = '#666';
-                                    e.target.style.borderColor = '#e0e0e0';
+                                    e.target.style.background = 'linear-gradient(45deg, #f5f5f5, #e8f5e8)';
+                                    e.target.style.color = '#4caf50';
+                                    e.target.style.borderColor = 'rgba(76, 175, 80, 0.2)';
+                                    e.target.style.transform = 'scale(1)';
+                                    e.target.style.boxShadow = 'none';
                                   }}
                                   onClick={() => {
                                     addItem(item);
@@ -157,8 +187,19 @@ const Cart = () => {
 
                               <p className="text-start text-md-center">
                                 <strong>
-                                  <span style={{ color: '#666' }}>{item.qty}</span>{" "}
-                                  x <span style={{ color: '#1976d2' }}>${item.price}</span>
+                                  <span style={{ 
+                                    background: 'linear-gradient(45deg, #666, #7b1fa2)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text'
+                                  }}>{item.qty}</span>{" "}
+                                  x <span style={{ 
+                                    background: 'linear-gradient(45deg, #1976d2, #e91e63)',
+                                    WebkitBackgroundClip: 'text',
+                                    WebkitTextFillColor: 'transparent',
+                                    backgroundClip: 'text',
+                                    fontSize: '1.1rem'
+                                  }}>${item.price}</span>
                                 </strong>
                               </p>
                             </div>
@@ -167,7 +208,7 @@ const Cart = () => {
                           <hr className="my-4" style={{
                             border: 'none',
                             height: '1px',
-                            background: 'linear-gradient(90deg, transparent, rgba(33, 150, 243, 0.3), transparent)'
+                            background: 'linear-gradient(90deg, transparent, rgba(156, 39, 176, 0.3), rgba(233, 30, 99, 0.3), transparent)'
                           }} />
                         </div>
                       );
@@ -178,42 +219,71 @@ const Cart = () => {
               <div className="col-md-4">
                 <div className="card mb-4">
                   <div className="card-header py-3" style={{
-                    background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)',
+                    background: 'linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 50%, #fce4ec 100%)',
                     border: 'none',
                     borderRadius: '15px 15px 0 0'
                   }}>
                     <h5 className="mb-0" style={{
-                      color: '#1565c0',
+                      background: 'linear-gradient(45deg, #1565c0, #7b1fa2)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
                       fontWeight: '600'
                     }}>Order Summary</h5>
                   </div>
                   <div className="card-body" style={{
                     background: 'white',
                     borderRadius: '0 0 15px 15px',
-                    boxShadow: '0 5px 15px rgba(33, 150, 243, 0.1)'
+                    boxShadow: '0 8px 25px rgba(156, 39, 176, 0.15)'
                   }}>
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0" style={{
                         backgroundColor: 'transparent',
                         color: '#666'
                       }}>
-                        Products ({totalItems})<span style={{ color: '#1976d2', fontWeight: '600' }}>${Math.round(subtotal)}</span>
+                        Products ({totalItems})<span style={{ 
+                          background: 'linear-gradient(45deg, #1976d2, #7b1fa2)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                          fontWeight: '700',
+                          fontSize: '1.1rem'
+                        }}>${Math.round(subtotal)}</span>
                       </li>
                       <li className="list-group-item d-flex justify-content-between align-items-center px-0" style={{
                         backgroundColor: 'transparent',
                         color: '#666'
                       }}>
                         Shipping
-                        <span style={{ color: '#1976d2', fontWeight: '600' }}>${shipping}</span>
+                        <span style={{ 
+                          background: 'linear-gradient(45deg, #1976d2, #7b1fa2)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                          fontWeight: '700',
+                          fontSize: '1.1rem'
+                        }}>${shipping}</span>
                       </li>
                       <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3" style={{
                         backgroundColor: 'transparent'
                       }}>
                         <div>
-                          <strong style={{ color: '#1565c0' }}>Total amount</strong>
+                          <strong style={{ 
+                            background: 'linear-gradient(45deg, #1565c0, #7b1fa2, #e91e63)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                            fontSize: '1.1rem'
+                          }}>Total amount</strong>
                         </div>
                         <span>
-                          <strong style={{ color: '#1565c0', fontSize: '1.2rem' }}>${Math.round(subtotal + shipping)}</strong>
+                          <strong style={{ 
+                            background: 'linear-gradient(45deg, #1565c0, #7b1fa2, #e91e63)',
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                            backgroundClip: 'text',
+                            fontSize: '1.3rem'
+                          }}>${Math.round(subtotal + shipping)}</strong>
                         </span>
                       </li>
                     </ul>
@@ -222,29 +292,31 @@ const Cart = () => {
                       to="/checkout"
                       className="btn btn-lg btn-block"
                       style={{
-                        background: 'linear-gradient(135deg, #2196f3 0%, #1976d2 100%)',
+                        background: 'linear-gradient(135deg, #2196f3 0%, #9c27b0 50%, #e91e63 100%)',
                         color: 'white',
                         border: 'none',
                         borderRadius: '25px',
                         padding: '15px 30px',
                         fontWeight: '600',
                         fontSize: '1.1rem',
-                        transition: 'all 0.3s ease',
-                        boxShadow: '0 4px 20px rgba(33, 150, 243, 0.3)',
+                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                        boxShadow: '0 6px 25px rgba(156, 39, 176, 0.4)',
                         textDecoration: 'none',
                         display: 'block',
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        position: 'relative',
+                        overflow: 'hidden'
                       }}
                       onMouseEnter={(e) => {
-                        e.target.style.transform = 'translateY(-3px)';
-                        e.target.style.boxShadow = '0 8px 30px rgba(33, 150, 243, 0.4)';
+                        e.target.style.transform = 'translateY(-4px) scale(1.02)';
+                        e.target.style.boxShadow = '0 12px 40px rgba(156, 39, 176, 0.5)';
                       }}
                       onMouseLeave={(e) => {
-                        e.target.style.transform = 'translateY(0)';
-                        e.target.style.boxShadow = '0 4px 20px rgba(33, 150, 243, 0.3)';
+                        e.target.style.transform = 'translateY(0) scale(1)';
+                        e.target.style.boxShadow = '0 6px 25px rgba(156, 39, 176, 0.4)';
                       }}
                     >
-                      Go to checkout
+                      🚀 Go to checkout
                     </Link>
                   </div>
                 </div>
@@ -260,26 +332,59 @@ const Cart = () => {
     <>
       <Navbar />
       <div className="container my-3 py-3" style={{
-        background: 'linear-gradient(135deg, #f8fbff 0%, #e3f2fd 100%)',
+        background: 'linear-gradient(135deg, #f8fbff 0%, #fce4ec 30%, #f3e5f5 70%, #e3f2fd 100%)',
         borderRadius: '20px',
-        boxShadow: '0 5px 25px rgba(33, 150, 243, 0.1)',
-        minHeight: '80vh'
+        boxShadow: '0 10px 40px rgba(156, 39, 176, 0.15), 0 5px 20px rgba(33, 150, 243, 0.1)',
+        minHeight: '80vh',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
+        {/* Animated background */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `
+            radial-gradient(circle at 20% 80%, rgba(233, 30, 99, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(156, 39, 176, 0.05) 0%, transparent 50%)
+          `,
+          animation: 'float 8s ease-in-out infinite',
+          zIndex: 0
+        }}></div>
+        
         <h1 className="text-center" style={{
-          color: '#1565c0',
+          background: 'linear-gradient(45deg, #1565c0, #7b1fa2, #e91e63)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
           fontWeight: '600',
           marginBottom: '1rem',
-          textShadow: '0 1px 3px rgba(21, 101, 192, 0.2)'
-        }}>Cart</h1>
+          position: 'relative',
+          zIndex: 2
+        }}>🛒 Shopping Cart</h1>
         <hr style={{
           border: 'none',
           height: '3px',
-          background: 'linear-gradient(90deg, transparent, #2196f3, transparent)',
+          background: 'linear-gradient(90deg, transparent, #2196f3, #9c27b0, #e91e63, transparent)',
           margin: '2rem auto',
-          width: '100px',
-          borderRadius: '2px'
+          width: '150px',
+          borderRadius: '2px',
+          position: 'relative',
+          zIndex: 2
         }} />
-        {state.length > 0 ? <ShowCart /> : <EmptyCart />}
+        <div style={{ position: 'relative', zIndex: 2 }}>
+          {state.length > 0 ? <ShowCart /> : <EmptyCart />}
+        </div>
+        
+        <style jsx>{`
+          @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(1deg); }
+            66% { transform: translateY(5px) rotate(-1deg); }
+          }
+        `}</style>
       </div>
       <Footer />
     </>
